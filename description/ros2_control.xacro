@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <ros2_control name="GazeboSystem" type="system">
+        <hardware>
+            <plugin>gazebo_ros2_control/GazeboSystem</plugin> <!--plugin for hardware manager-->
+        </hardware>
+        <joint name="base_to_left_wheel">
+            <command_interface name="velocity">
+                <param name="min">-10</param>
+                <param name="max">10</param>
+            </command_interface>
+            <state_interface name="velocity"/> <!-- remove for final --> 
+            <state_interface name="position"/> <!--remove-->
+        </joint>
+        <joint name="base_to_right_wheel">
+            <command_interface name="velocity">
+                <param name="min">-10</param>
+                <param name="max">10</param>
+            </command_interface>
+            <state_interface name="velocity"/> <!-- comment out for final robot or add encoders-->
+            <state_interface name="position"/> 
+
+            <!-- <state_interface name="velocity"/> comment out for final robot-->
+            <!-- <state_interface name="position"/> -->
+        </joint>    
+    </ros2_control>
+
+    <!--plugin for gazebo-->
+    <gazebo>
+        <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+            <!-- <parameters>/home/rosvm/dev_ws/src/robot1/config/robot1_controllers1.yaml</parameters> -->
+            <parameters>$(find robot1)/config/robot1_controllers1.yaml</parameters>
+        </plugin>
+    </gazebo>       
+
+</robot>

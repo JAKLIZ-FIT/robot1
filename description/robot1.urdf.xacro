@@ -2,6 +2,8 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="my_robot1">
 
     <xacro:include filename="robot1_core.xacro"/>
-
+    
+    <xacro:include filename="ros2_control.xacro"/>
+    <!-- <xacro:include filename="gazebo_control.xacro"/> -->
     
 </robot>
